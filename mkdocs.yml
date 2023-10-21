@@ -25,10 +25,15 @@ theme:
   features:
     - content.code.copy
     - navigation.expand
+    - navigation.sections
+    - navigation.indexes
     - toc.follow
+    - search.highlight
+    - search.suggest
 
 # Page tree
 nav:
   - Home: index.md
-  - Wargames:
-    - Bandit: bandit/index.md
+  - Bandit:
+    - bandit/index.md
+    - Passwords: bandit/passwords.md
