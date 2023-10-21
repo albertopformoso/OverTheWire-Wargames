@@ -50,4 +50,22 @@ ssh bandit2@bandit.labs.overthewire.org -p 2220
 cat "./spaces in this filename"
 ```
 
+> Output: aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+
+## Level 3 → Level 4
+
+The password for the next level is stored in a hidden file in the inhere directory.
+
+```sh
+ssh bandit3@bandit.labs.overthewire.org -p 2220
+```
+
 > Password: aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+
+```sh
+ls -la
+ls -la inhere/
+cat inhere/.hidden
+```
+
+> Output: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
