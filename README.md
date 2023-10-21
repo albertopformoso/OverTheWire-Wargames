@@ -10,6 +10,6 @@
 
 | Wargame                                            | Solutions |
 | :------------------------------------------------- | :-------- |
-| [Bandit](https://overthewire.org/wargames/bandit/) | [link]()  |
+| [Bandit](https://overthewire.org/wargames/bandit/) | [link](https://albertopformoso.github.io/OverTheWire-Wargames/bandit/)  |
 
 </center>
