@@ -12,7 +12,7 @@
 ## Passwords
 
 | Level             | Password                         |
-| :---------------- | :------------------------------: |
+| :---------------- | :------------------------------- |
 | Level 0           | bandit0                          |
 | Level 0 → Level 1 | NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL |
 
