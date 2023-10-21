@@ -69,3 +69,23 @@ cat inhere/.hidden
 ```
 
 > Output: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+
+## Level 4 → Level 5
+
+The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
+
+```sh
+ssh bandit4@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+
+```sh
+find ./inhere -type f -exec file {} + | grep "ASCII"
+```
+
+```sh
+cat ./inhere/-file07
+```
+
+> Output: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
