@@ -31,4 +31,4 @@ theme:
 nav:
   - Home: index.md
   - Wargames:
-    - Bandit: bandit/README.md
+    - Bandit: bandit/index.md
