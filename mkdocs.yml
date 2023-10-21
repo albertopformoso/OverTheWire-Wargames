@@ -1,0 +1,34 @@
+# Project information
+site_name: Wargames Solutions
+site_url: https://albertopformoso.github.io/OverTheWire-Wargames/
+
+# Repository
+repo_name: albertopformoso/OverTheWire-Wargames
+repo_url: https://github.com/albertopformoso/OverTheWire-Wargames
+
+# Plugins
+plugins:
+  - search
+  - table-reader
+
+# Additional configuration
+extra:
+  generator: false
+
+# Configuration
+theme:
+  name: material
+  footer: false
+  palette:
+    scheme: slate
+    primary: black
+  features:
+    - content.code.copy
+    - navigation.expand
+    - toc.follow
+
+# Page tree
+nav:
+  - Home: index.md
+  - Wargames:
+    - Bandit: bandit/README.md

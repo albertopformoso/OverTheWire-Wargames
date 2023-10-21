@@ -1,21 +1,8 @@
 # Bandit
 
-<!-- TOC -->
-
-- [Bandit](#bandit)
-    - [Passwords](#passwords)
-    - [Level 0](#level-0)
-    - [Level 0 → Level 1](#level-0-%E2%86%92-level-1)
-
-<!-- /TOC -->
-
 ## Passwords
 
-| Level             | Password                         |
-| :---------------- | :------------------------------- |
-| Level 0           | bandit0                          |
-| Level 0 → Level 1 | NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL |
-
+{{ read_csv('./passwords.csv') }}
 
 ## Level 0
 
