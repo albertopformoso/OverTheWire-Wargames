@@ -6,4 +6,4 @@
 
 | Wargame                                            | Solutions |
 | :------------------------------------------------- | :-------- |
-| [Bandit](https://overthewire.org/wargames/bandit/) | [link]()  |
+| [Bandit](https://overthewire.org/wargames/bandit/) | [link](https://github.com/albertopformoso/OverTheWire-Wargames/blob/main/bandit/README.md)  |
