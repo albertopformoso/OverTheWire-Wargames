@@ -25,3 +25,19 @@ cat readme
 ```
 
 > Output: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+
+## Level 1 → Level 2
+
+The password for the next level is stored in a file called - located in the home directory
+
+> Password: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+
+```sh
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+```
+
+```sh
+cat "./-"
+```
+
+> Output: rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
