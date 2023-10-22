@@ -217,3 +217,19 @@ x]T========== theG)"
 ========== is
 ========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
 ```
+
+## Level 10 → Level 11
+
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+```sh
+ssh bandit10@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+
+```sh
+base64 --decode data.txt
+```
+
+> Output: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
