@@ -180,3 +180,38 @@ sort data.txt | uniq -u
 [`uniq`](https://www.ibm.com/docs/sl/aix/7.2?topic=u-uniq-command) flag `-u` displays only the unrepeated lines.
 
 > Output: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+
+## Level 9 → Level 10
+
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+```sh
+ssh bandit9@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+
+=== "strings"
+
+    Use strings to extract readable strings:
+    The strings command in Linux is used to extract printable strings from a binary file. This is helpful when trying to locate human-readable content within such files.
+
+    ```sh
+    strings data.txt | grep "==="
+    ```
+
+=== "grep"
+
+    The -a option in grep allows it to process a binary file as if it were text. When dealing with files that might contain a mix of binary data and human-readable strings, the -a (or --text) option can be quite useful.
+
+    Using grep -a "===" data.txt will search the file for lines containing the pattern ===, treating the file as text, regardless of its actual content. Given your level's goal, this command should be effective in identifying lines with several '=' characters, leading you to find the password.
+
+    ```sh
+    grep -a "===" data.txt
+    ```
+
+> Output:
+> x]T========== theG)"
+> ========== passwordk^
+> ========== is
+> ========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
