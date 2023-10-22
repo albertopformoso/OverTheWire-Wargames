@@ -114,7 +114,7 @@ cat ./inhere/maybehere07/.file2
 
 > Output: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
 
-# Level 6 → Level 7
+## Level 6 → Level 7
 
 The password for the next level is stored somewhere on the server and has all of the following properties:
 
@@ -193,7 +193,8 @@ ssh bandit9@bandit.labs.overthewire.org -p 2220
 
 === "strings"
 
-    Use strings to extract readable strings:
+    **Use strings to extract readable strings**
+
     The strings command in Linux is used to extract printable strings from a binary file. This is helpful when trying to locate human-readable content within such files.
 
     ```sh
@@ -210,8 +211,9 @@ ssh bandit9@bandit.labs.overthewire.org -p 2220
     grep -a "===" data.txt
     ```
 
-> Output:
-> x]T========== theG)"
-> ========== passwordk^
-> ========== is
-> ========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+```log "Output"
+x]T========== theG)"
+========== passwordk^
+========== is
+========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+```
