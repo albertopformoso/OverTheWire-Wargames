@@ -233,3 +233,19 @@ base64 --decode data.txt
 ```
 
 > Output: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+
+## Level 11 → Level 12
+
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+```sh
+ssh bandit11@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+
+```sh
+cat data.txt | tr '[a-z][A-Z]' '[n-za-m][N-ZA-M]'
+```
+
+> Output: The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
