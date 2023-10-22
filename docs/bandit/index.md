@@ -211,7 +211,7 @@ ssh bandit9@bandit.labs.overthewire.org -p 2220
     grep -a "===" data.txt
     ```
 
-```log "Output"
+```log title="Output"
 x]T========== theG)"
 ========== passwordk^
 ========== is
