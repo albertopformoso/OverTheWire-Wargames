@@ -113,3 +113,34 @@ cat ./inhere/maybehere07/.file2
 ```
 
 > Output: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+
+# Level 6 → Level 7
+
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+owned by user bandit7
+owned by group bandit6
+33 bytes in size
+
+```sh
+ssh bandit6@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+
+```sh
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+```
+Here's a breakdown of the command:
+
++ `/`: Start the search from the root directory.
++ `-user bandit7`: Look for files owned by the user bandit7.
++ `-group bandit6`: Look for files owned by the group bandit6.
++ `-size 33c`: Look for files that are 33 bytes in size. The c stands for bytes.
++ `2>/dev/null`: This part of the command redirects all error messages (like "Permission denied") to /dev/null so that you only see valid results.
+
+```sh
+cat /var/lib/dpkg/info/bandit7.password
+```
+
+> Output: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
