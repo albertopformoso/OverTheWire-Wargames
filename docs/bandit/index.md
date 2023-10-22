@@ -249,3 +249,131 @@ cat data.txt | tr '[a-z][A-Z]' '[n-za-m][N-ZA-M]'
 ```
 
 > Output: The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+
+## Level 12 → Level 13
+
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+
+```sh
+ssh bandit12@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+
+```sh
+cd /tmp
+mktemp -d
+```
+
+> Output: /tmp/tmp.KC62y3y5gx
+
+```sh
+cd tmp.KC62y3y5gx
+cp ~/data.txt .
+mv data.txt data.hex_dump
+```
+
+Use `xxd` to revert the hexdump:
+
+```sh
+xxd -r data.hex_dump data.bin
+```
+
+Use the `file` command to identify the file type:
+```sh
+file data.bin
+```
+
+> Output: data.bin: gzip compressed data, was "data2.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 573
+
+```sh
+mv data.bin data.gz
+gzip -d data.gz
+ls
+```
+
+> Output: data  data.hex_dump
+
+Use the `file` command to identify the file type:
+```sh
+file data
+```
+
+> Output: data: bzip2 compressed data, block size = 900k
+
+```sh
+mv data data.bz2
+bzip2 -d data.bz2
+file data
+```
+
+> Output: data: gzip compressed data, was "data4.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 20480
+
+```sh
+mv data data.gz
+gzip -d data.gz
+file data
+```
+
+> Outpu: data: POSIX tar archive (GNU)
+
+```sh
+mv data data.tar
+tar -xf data.tar
+ls
+```
+
+> Output: data5.bin  data.hex_dump  data.tar
+
+```sh
+file data5.bin
+```
+
+> Output: data5.bin: POSIX tar archive (GNU)
+
+```sh
+tar -xf data5.bin
+ls
+```
+
+> Output: data5.bin  data6.bin  data.hex_dump  data.tar
+
+```sh
+file data6.bin
+```
+
+> Output: data6.bin: bzip2 compressed data, block size = 900k
+
+```sh
+bzip2 -d data6.bin
+file data6.bin.out
+```
+
+> Output: data6.bin.out: POSIX tar archive (GNU)
+
+```sh
+tar -xf data6.bin.out
+ls
+```
+
+> Output: data5.bin  data6.bin.out  data8.bin  data.hex_dump  data.tar
+
+```sh
+file data8.bin
+```
+
+> Output: data8.bin: gzip compressed data, was "data9.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 49
+
+```sh
+mv data8.bin data8.gz
+gzip -d data8.gz
+file data8
+```
+
+> Output: data8: ASCII text
+
+```sh
+cat data8
+```
+
+> Output: The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
