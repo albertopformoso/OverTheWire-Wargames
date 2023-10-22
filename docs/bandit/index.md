@@ -161,4 +161,22 @@ cat data.txt | grep "millionth"
 
 > Output: millionth       TESKZC0XvTetK0S9xNwm25STk5iWrBvP
 
+## Level 8 → Level 9
 
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+
+The password for the next level is stored in the file data.txt next to the word millionth
+
+```sh
+ssh bandit8@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+
+```sh
+sort data.txt | uniq -u
+```
+
+[`uniq`](https://www.ibm.com/docs/sl/aix/7.2?topic=u-uniq-command) flag `-u` displays only the unrepeated lines.
+
+> Output: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
