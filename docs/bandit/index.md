@@ -144,3 +144,21 @@ cat /var/lib/dpkg/info/bandit7.password
 ```
 
 > Output: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+
+## Level 7 → Level 8
+
+The password for the next level is stored in the file data.txt next to the word millionth
+
+```sh
+ssh bandit7@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+
+```sh
+cat data.txt | grep "millionth"
+```
+
+> Output: millionth       TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+
+
