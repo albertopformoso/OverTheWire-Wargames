@@ -90,7 +90,7 @@ cat ./inhere/-file07
 
 > Output: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
 
-## Bandit Level 5 → Level 6
+## Level 5 → Level 6
 
 The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
 
