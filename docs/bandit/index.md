@@ -89,3 +89,27 @@ cat ./inhere/-file07
 ```
 
 > Output: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+
+## Bandit Level 5 → Level 6
+
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+human-readable
+1033 bytes in size
+not executable
+
+```sh
+ssh bandit5@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+
+```sh
+find ./inhere -type f ! -executable -size 1033c
+```
+
+```sh
+cat ./inhere/maybehere07/.file2
+```
+
+> Output: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
