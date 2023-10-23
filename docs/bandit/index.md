@@ -402,7 +402,9 @@ ssh bandit14@bandit.labs.overthewire.org -p 2220 -i sshkey.private
 
     If you get `WARNING: UNPROTECTED PRIVATE KEY FILE!` message. This can be easy fix by changing ssh key permisions:
 
-    `chmod 600 sshkey.private`
+    ```sh
+    chmod 600 sshkey.private
+    ```
 
 ```sh
 cat /etc/bandit_pass/bandit14
