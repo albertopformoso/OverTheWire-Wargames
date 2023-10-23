@@ -389,3 +389,34 @@ scp -P 2220 bandit13@bandit.labs.overthewire.org:~/sshkey.private .
 > Password: wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
 
 You should have the `sshkey.private` on your local directory
+
+## Level 14 → Level 15
+
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+```sh
+ssh bandit14@bandit.labs.overthewire.org -p 2220 -i sshkey.private
+```
+
+!!! note
+
+    If you get `WARNING: UNPROTECTED PRIVATE KEY FILE!` message. This can be easy fix by changing ssh key permisions:
+
+    `chmod 600 sshkey.private`
+
+```sh
+cat /etc/bandit_pass/bandit14
+```
+
+> Output: fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+
+```sh
+nc 127.0.0.1 30000
+```
+
+> Input: fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+
+```sh title="Output"
+Correct!
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+```
