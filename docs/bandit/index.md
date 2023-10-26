@@ -445,3 +445,36 @@ JQttfApK4SeyHwDlI9SXGR50qclOAil1
 
 closed
 ```
+
+## Level 16 → Level 17
+
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+
+```sh
+ssh bandit16@bandit.labs.overthewire.org -p 2220
+```
+
+> Password: JQttfApK4SeyHwDlI9SXGR50qclOAil1
+
+```sh
+nmap -sV 127.0.0.1 -p 31000-32000
+```
+
+```log title="Output"
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-10-26 00:08 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00013s latency).
+Not shown: 996 closed ports
+PORT      STATE SERVICE     VERSION
+31046/tcp open  echo
+31518/tcp open  ssl/echo
+31691/tcp open  echo
+31790/tcp open  ssl/unknown
+31960/tcp open  echo
+```
+
+```sh
+echo 'JQttfApK4SeyHwDlI9SXGR50qclOAil1' | openssl s_client -ign_eof -connect 127.0.0.1:31790
+```
+
+It will output the private ssh key, you should copy and paste it to your local machine.
