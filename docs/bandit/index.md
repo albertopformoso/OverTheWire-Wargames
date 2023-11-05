@@ -478,3 +478,33 @@ echo 'JQttfApK4SeyHwDlI9SXGR50qclOAil1' | openssl s_client -ign_eof -connect 127
 ```
 
 It will output the private ssh key, you should copy and paste it to your local machine.
+
+## Level 17 → Level 18
+
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19
+
+```sh
+ssh ssh -i ./sshkey17.private bandit17@bandit.labs.overthewire.org -p 2220
+```
+
+!!! note
+
+    If you get `WARNING: UNPROTECTED PRIVATE KEY FILE!` message. This can be easy fix by changing ssh key permisions:
+
+    ```sh
+    chmod 600 sshkey.private
+    ```
+
+```sh
+diff passwords.new passwords.old
+```
+
+```log title="Output"
+< hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
+---
+> p6ggwdNHncnmCNxuAt0KtKVq185ZU7AW
+```
+
+Since I wrote `paswords.new` on the first position, the password is `hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg` 
