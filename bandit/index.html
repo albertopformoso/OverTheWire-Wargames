@@ -1,0 +1,924 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://albertopformoso.github.io/OverTheWire-Wargames/bandit/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="passwords/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+    
+    
+      
+        <title>Bandit - Wargames Solutions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bandit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Wargames Solutions" class="md-header__button md-logo" aria-label="Wargames Solutions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Wargames Solutions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bandit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/albertopformoso/OverTheWire-Wargames" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    albertopformoso/OverTheWire-Wargames
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Wargames Solutions" class="md-nav__button md-logo" aria-label="Wargames Solutions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Wargames Solutions
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/albertopformoso/OverTheWire-Wargames" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    albertopformoso/OverTheWire-Wargames
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    Bandit
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Bandit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passwords/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passwords
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-0" class="md-nav__link">
+    Level 0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-0-level-1" class="md-nav__link">
+    Level 0 → Level 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-level-2" class="md-nav__link">
+    Level 1 → Level 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-level-3" class="md-nav__link">
+    Level 2 → Level 3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-level-4" class="md-nav__link">
+    Level 3 → Level 4
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-level-5" class="md-nav__link">
+    Level 4 → Level 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-5-level-6" class="md-nav__link">
+    Level 5 → Level 6
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-6-level-7" class="md-nav__link">
+    Level 6 → Level 7
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-7-level-8" class="md-nav__link">
+    Level 7 → Level 8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-8-level-9" class="md-nav__link">
+    Level 8 → Level 9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-9-level-10" class="md-nav__link">
+    Level 9 → Level 10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-10-level-11" class="md-nav__link">
+    Level 10 → Level 11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-11-level-12" class="md-nav__link">
+    Level 11 → Level 12
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-12-level-13" class="md-nav__link">
+    Level 12 → Level 13
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-13-level-14" class="md-nav__link">
+    Level 13 → Level 14
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-14-level-15" class="md-nav__link">
+    Level 14 → Level 15
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-15-level-16" class="md-nav__link">
+    Level 15 → Level 16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-16-level-17" class="md-nav__link">
+    Level 16 → Level 17
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-17-level-18" class="md-nav__link">
+    Level 17 → Level 18
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="bandit">Bandit</h1>
+<h2 id="level-0">Level 0</h2>
+<p>The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit0@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: bandit0</p>
+</blockquote>
+<h2 id="level-0-level-1">Level 0 → Level 1</h2>
+<p>The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>readme
+</code></pre></div>
+<blockquote>
+<p>Output: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL</p>
+</blockquote>
+<h2 id="level-1-level-2">Level 1 → Level 2</h2>
+<p>The password for the next level is stored in a file called - located in the home directory</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit1@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s2">&quot;./-&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>Output: rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi</p>
+</blockquote>
+<h2 id="level-2-level-3">Level 2 → Level 3</h2>
+<p>The password for the next level is stored in a file called spaces in this filename located in the home directory</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit2@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s2">&quot;./spaces in this filename&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>Output: aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG</p>
+</blockquote>
+<h2 id="level-3-level-4">Level 3 → Level 4</h2>
+<p>The password for the next level is stored in a hidden file in the inhere directory.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit3@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-la
+ls<span class="w"> </span>-la<span class="w"> </span>inhere/
+cat<span class="w"> </span>inhere/.hidden
+</code></pre></div>
+<blockquote>
+<p>Output: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe</p>
+</blockquote>
+<h2 id="level-4-level-5">Level 4 → Level 5</h2>
+<p>The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit4@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>./inhere<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>file<span class="w"> </span><span class="o">{}</span><span class="w"> </span>+<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;ASCII&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>./inhere/-file07
+</code></pre></div>
+<blockquote>
+<p>Output: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR</p>
+</blockquote>
+<h2 id="level-5-level-6">Level 5 → Level 6</h2>
+<p>The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:</p>
+<p>human-readable
+1033 bytes in size
+not executable</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit5@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>./inhere<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>!<span class="w"> </span>-executable<span class="w"> </span>-size<span class="w"> </span>1033c
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>./inhere/maybehere07/.file2
+</code></pre></div>
+<blockquote>
+<p>Output: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU</p>
+</blockquote>
+<h2 id="level-6-level-7">Level 6 → Level 7</h2>
+<p>The password for the next level is stored somewhere on the server and has all of the following properties:</p>
+<p>owned by user bandit7
+owned by group bandit6
+33 bytes in size</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit6@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU</p>
+</blockquote>
+<p><div class="highlight"><pre><span></span><code>find<span class="w"> </span>/<span class="w"> </span>-user<span class="w"> </span>bandit7<span class="w"> </span>-group<span class="w"> </span>bandit6<span class="w"> </span>-size<span class="w"> </span>33c<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</code></pre></div>
+Here's a breakdown of the command:</p>
+<ul>
+<li><code>/</code>: Start the search from the root directory.</li>
+<li><code>-user bandit7</code>: Look for files owned by the user bandit7.</li>
+<li><code>-group bandit6</code>: Look for files owned by the group bandit6.</li>
+<li><code>-size 33c</code>: Look for files that are 33 bytes in size. The c stands for bytes.</li>
+<li><code>2&gt;/dev/null</code>: This part of the command redirects all error messages (like "Permission denied") to /dev/null so that you only see valid results.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/dpkg/info/bandit7.password
+</code></pre></div>
+<blockquote>
+<p>Output: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S</p>
+</blockquote>
+<h2 id="level-7-level-8">Level 7 → Level 8</h2>
+<p>The password for the next level is stored in the file data.txt next to the word millionth</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit7@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>data.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;millionth&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>Output: millionth       TESKZC0XvTetK0S9xNwm25STk5iWrBvP</p>
+</blockquote>
+<h2 id="level-8-level-9">Level 8 → Level 9</h2>
+<p>The password for the next level is stored in the file data.txt and is the only line of text that occurs only once</p>
+<p>The password for the next level is stored in the file data.txt next to the word millionth</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit8@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: TESKZC0XvTetK0S9xNwm25STk5iWrBvP</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>sort<span class="w"> </span>data.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-u
+</code></pre></div>
+<p><a href="https://www.ibm.com/docs/sl/aix/7.2?topic=u-uniq-command"><code>uniq</code></a> flag <code>-u</code> displays only the unrepeated lines.</p>
+<blockquote>
+<p>Output: EN632PlfYiZbn3PhVK3XOGSlNInNE00t</p>
+</blockquote>
+<h2 id="level-9-level-10">Level 9 → Level 10</h2>
+<p>The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit9@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: EN632PlfYiZbn3PhVK3XOGSlNInNE00t</p>
+</blockquote>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">strings</label><label for="__tabbed_1_2">grep</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Use strings to extract readable strings</strong></p>
+<p>The strings command in Linux is used to extract printable strings from a binary file. This is helpful when trying to locate human-readable content within such files.</p>
+<div class="highlight"><pre><span></span><code>strings<span class="w"> </span>data.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;===&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>The -a option in grep allows it to process a binary file as if it were text. When dealing with files that might contain a mix of binary data and human-readable strings, the -a (or --text) option can be quite useful.</p>
+<p>Using grep -a "===" data.txt will search the file for lines containing the pattern ===, treating the file as text, regardless of its actual content. Given your level's goal, this command should be effective in identifying lines with several '=' characters, leading you to find the password.</p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;===&quot;</span><span class="w"> </span>data.txt
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code>x]T========== theG)&quot;
+========== passwordk^
+========== is
+========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+</code></pre></div>
+<h2 id="level-10-level-11">Level 10 → Level 11</h2>
+<p>The password for the next level is stored in the file data.txt, which contains base64 encoded data</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit10@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>base64<span class="w"> </span>--decode<span class="w"> </span>data.txt
+</code></pre></div>
+<blockquote>
+<p>Output: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM</p>
+</blockquote>
+<h2 id="level-11-level-12">Level 11 → Level 12</h2>
+<p>The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit11@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>data.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;[a-z][A-Z]&#39;</span><span class="w"> </span><span class="s1">&#39;[n-za-m][N-ZA-M]&#39;</span>
+</code></pre></div>
+<blockquote>
+<p>Output: The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv</p>
+</blockquote>
+<h2 id="level-12-level-13">Level 12 → Level 13</h2>
+<p>The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit12@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/tmp
+mktemp<span class="w"> </span>-d
+</code></pre></div>
+<blockquote>
+<p>Output: /tmp/tmp.KC62y3y5gx</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>tmp.KC62y3y5gx
+cp<span class="w"> </span>~/data.txt<span class="w"> </span>.
+mv<span class="w"> </span>data.txt<span class="w"> </span>data.hex_dump
+</code></pre></div>
+<p>Use <code>xxd</code> to revert the hexdump:</p>
+<div class="highlight"><pre><span></span><code>xxd<span class="w"> </span>-r<span class="w"> </span>data.hex_dump<span class="w"> </span>data.bin
+</code></pre></div>
+<p>Use the <code>file</code> command to identify the file type:
+<div class="highlight"><pre><span></span><code>file<span class="w"> </span>data.bin
+</code></pre></div></p>
+<blockquote>
+<p>Output: data.bin: gzip compressed data, was "data2.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 573</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>data.bin<span class="w"> </span>data.gz
+gzip<span class="w"> </span>-d<span class="w"> </span>data.gz
+ls
+</code></pre></div>
+<blockquote>
+<p>Output: data  data.hex_dump</p>
+</blockquote>
+<p>Use the <code>file</code> command to identify the file type:
+<div class="highlight"><pre><span></span><code>file<span class="w"> </span>data
+</code></pre></div></p>
+<blockquote>
+<p>Output: data: bzip2 compressed data, block size = 900k</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>data<span class="w"> </span>data.bz2
+bzip2<span class="w"> </span>-d<span class="w"> </span>data.bz2
+file<span class="w"> </span>data
+</code></pre></div>
+<blockquote>
+<p>Output: data: gzip compressed data, was "data4.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 20480</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>data<span class="w"> </span>data.gz
+gzip<span class="w"> </span>-d<span class="w"> </span>data.gz
+file<span class="w"> </span>data
+</code></pre></div>
+<blockquote>
+<p>Outpu: data: POSIX tar archive (GNU)</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>data<span class="w"> </span>data.tar
+tar<span class="w"> </span>-xf<span class="w"> </span>data.tar
+ls
+</code></pre></div>
+<blockquote>
+<p>Output: data5.bin  data.hex_dump  data.tar</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>file<span class="w"> </span>data5.bin
+</code></pre></div>
+<blockquote>
+<p>Output: data5.bin: POSIX tar archive (GNU)</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xf<span class="w"> </span>data5.bin
+ls
+</code></pre></div>
+<blockquote>
+<p>Output: data5.bin  data6.bin  data.hex_dump  data.tar</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>file<span class="w"> </span>data6.bin
+</code></pre></div>
+<blockquote>
+<p>Output: data6.bin: bzip2 compressed data, block size = 900k</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>bzip2<span class="w"> </span>-d<span class="w"> </span>data6.bin
+file<span class="w"> </span>data6.bin.out
+</code></pre></div>
+<blockquote>
+<p>Output: data6.bin.out: POSIX tar archive (GNU)</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xf<span class="w"> </span>data6.bin.out
+ls
+</code></pre></div>
+<blockquote>
+<p>Output: data5.bin  data6.bin.out  data8.bin  data.hex_dump  data.tar</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>file<span class="w"> </span>data8.bin
+</code></pre></div>
+<blockquote>
+<p>Output: data8.bin: gzip compressed data, was "data9.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 49</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>data8.bin<span class="w"> </span>data8.gz
+gzip<span class="w"> </span>-d<span class="w"> </span>data8.gz
+file<span class="w"> </span>data8
+</code></pre></div>
+<blockquote>
+<p>Output: data8: ASCII text</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>data8
+</code></pre></div>
+<blockquote>
+<p>Output: The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw</p>
+</blockquote>
+<h2 id="level-13-level-14">Level 13 → Level 14</h2>
+<p>The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">2220</span><span class="w"> </span>bandit13@bandit.labs.overthewire.org:~/sshkey.private<span class="w"> </span>.
+</code></pre></div>
+<blockquote>
+<p>Password: wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw</p>
+</blockquote>
+<p>You should have the <code>sshkey.private</code> on your local directory</p>
+<h2 id="level-14-level-15">Level 14 → Level 15</h2>
+<p>The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit14@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span><span class="w"> </span>-i<span class="w"> </span>sshkey.private
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get <code>WARNING: UNPROTECTED PRIVATE KEY FILE!</code> message. This can be easy fix by changing ssh key permisions:</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>sshkey.private
+</code></pre></div>
+</div>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/etc/bandit_pass/bandit14
+</code></pre></div>
+<blockquote>
+<p>Output: fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>nc<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">30000</span>
+</code></pre></div>
+<blockquote>
+<p>Input: fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq</p>
+</blockquote>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code>Correct!
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+</code></pre></div>
+<h2 id="level-15-level-16">Level 15 → Level 16</h2>
+<p>The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.</p>
+<p>Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS” section in the manpage. Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command…</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit15@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-ign_eof<span class="w"> </span>-connect<span class="w"> </span><span class="m">127</span>.0.0.1:30001
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code>Correct!
+JQttfApK4SeyHwDlI9SXGR50qclOAil1
+
+closed
+</code></pre></div>
+<h2 id="level-16-level-17">Level 16 → Level 17</h2>
+<p>The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>bandit16@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<blockquote>
+<p>Password: JQttfApK4SeyHwDlI9SXGR50qclOAil1</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>nmap<span class="w"> </span>-sV<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">31000</span>-32000
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code>Starting Nmap 7.80 ( https://nmap.org ) at 2023-10-26 00:08 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00013s latency).
+Not shown: 996 closed ports
+PORT      STATE SERVICE     VERSION
+31046/tcp open  echo
+31518/tcp open  ssl/echo
+31691/tcp open  echo
+31790/tcp open  ssl/unknown
+31960/tcp open  echo
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;JQttfApK4SeyHwDlI9SXGR50qclOAil1&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-ign_eof<span class="w"> </span>-connect<span class="w"> </span><span class="m">127</span>.0.0.1:31790
+</code></pre></div>
+<p>It will output the private ssh key, you should copy and paste it to your local machine.</p>
+<h2 id="level-17-level-18">Level 17 → Level 18</h2>
+<p>There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new</p>
+<p>NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>./sshkey17.private<span class="w"> </span>bandit17@bandit.labs.overthewire.org<span class="w"> </span>-p<span class="w"> </span><span class="m">2220</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get <code>WARNING: UNPROTECTED PRIVATE KEY FILE!</code> message. This can be easy fix by changing ssh key permisions:</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>sshkey.private
+</code></pre></div>
+</div>
+<div class="highlight"><pre><span></span><code>diff<span class="w"> </span>passwords.new<span class="w"> </span>passwords.old
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code>&lt; hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
+---
+&gt; p6ggwdNHncnmCNxuAt0KtKVq185ZU7AW
+</code></pre></div>
+<p>Since I wrote <code>paswords.new</code> on the first position, the password is <code>hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg</code> </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.sections", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>
